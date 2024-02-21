@@ -1,0 +1,38 @@
+/* Generic selectors */
+header {
+    background-color: rgb(6, 47, 51);
+    background-image: url("https://i.pinimg.com/originals/c3/35/8b/c3358bb87f18cf8bedac5b5f63710a0f.jpg");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    line-height: 1.2;
+    padding: 10vw 2em;
+    text-align: center;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Class selectors */
+.b-exercise-questions ol li{
+    font-weight: bold;
+}
+
+/* Id selectors */
+#my-name {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+/* Universal selectors */
+* {
+    font-family: sans-serif;
+}
+
+/* Pseudo-class selectors */
+a:hover {
+    color: red;
+  }
+  

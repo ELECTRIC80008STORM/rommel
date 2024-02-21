@@ -3,21 +3,23 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <title>Mi Primer HTML. Una historia de superación personal.</title>
+    <title>HTML. A Unique Experience</title>
+    <link rel="stylesheet" type="text/css" href="lab1StyleMIN.css">
 </head>
 <body>
     <header>
-        <h1>MI PRIMER HTML</h1>
-        <h3>Toda historia siempre tiene su comienzo...</h3>
+        <h2>Toda historia siempre tiene su comienzo...</h2>
     </header>
     <main>
         <p>
-            Yo soy <em>Rommel</em> y se me <del>pide</del> <ins>obliga</ins> a darte la siguiente información &#128521
+            Yo soy <em id="my-name">Rommel</em> y se me <del>pide</del> <ins>obliga</ins> a darte la siguiente información &#128521
             <br>
             <strong>Matrícula: </strong> A01709922
             <strong>Correo: </strong> rommtoledo@gmail.com
             <br>
-            Al igual que responder a las siguientes preguntas:
+        </p>
+        <section class="b-exercise-questions">
+            <h2>Preguntas del Laboratorio 1</h2>
             <ol>
                 <li>¿Cuál es la diferencia entre Internet y la World Wide Web?</li>
                 Internet es una red de computadoras interconectadas distribuidas físicamente alrededor del mundo. Por otro lado, la World Wide Web es un sistema de páginas interconectadas accesibles a través de internet. (MDM Web Docs, s.f.). 
@@ -65,54 +67,34 @@
                 </li>
                 El ciclo de vida son las series de fases que van desde el inicio (creación) hasta el final del sistema de información. Por otro lado el ciclo de desarrollo únicamente es la serie de fases o etapas que concluyen con la entrega del sistema de información, es decir, únicamente abarcan el proyecto.
             </ol>
-        </p>
-        <p>
-            <h2>
-                Referencias
-            </h2>
-            Aviani, G. (2019, 12 septiembre). An introduction to HTTP: everything you need to know. freeCodeCamp.org. 
-            <a href="https://www.freecodecamp.org/news/http-and-everything-you-need-to-know-about-it/">https://www.freecodecamp.org/news/http-and-everything-you-need-to-know-about-it/</a><br>
+        <section class="b-exercise-questions">
+            <h2>Preguntas del Laboratorio 2</h2>
+            <ol>
+                <li>Como ingeniero de software ¿cuál es tu recomendación sobre el uso de !important en un CSS?</li> 
+                Dado que !important permite cambiar la priorización de estilos, se debe usar con cuidado pues si bien es útil en ciertos casos, puede hacer difícil mantener el código al romper la propiedad de cascada que CSS tiene de manera natural. <br>
+                <li>Si se pone una imagen de fondo en una página HTML, ¿por qué debe escogerse con cuidado?</li>
+                Porque puede presentar problemas de visibilidad al tener un carácter más fuerte que otros elementos. Es decir, puede hacer ilegible lo demás. <br>
+                <li>Como ingeniero de software, ¿cuál es tu recomendación al elegir las unidades de un propiedad de estilo entre %, px y pt?</li>
+                Las unidades correctas pueden facilitar ciertas tareas, su relación es la siguiente:<br>
+                % Sirve para un diseño más responsivo pues se adapta al tamaño del contenedor. <br>
+                px Es mejor para una mayor precisión y control.<br>
+                pt Puede usarse mejor para imprimir.
+                <li>¿Por qué el uso de una versión minimizada del CSS mejora el rendimiento del sitio?</li>
+                Mejora el rendimiento al reducir el tamaño del archivo CSS, un mejor rendimiento significa al menos un menor tiempo de carga, algo visto de manera positiva por los usuarios.
+            </ol>
+        <section>
             
-            BBC News Mundo. (2019, 12 marzo). ¿Cuál es la diferencia entre internet y la web? (y por qué muchos las confunden). BBC News Mundo.
-            <a href="https://www.bbc.com/mundo/noticias-47538812">https://www.bbc.com/mundo/noticias-47538812</a><br>
-            Controles de formulario originales - Aprende desarrollo web | MDN. (s. f.). MDN Web Docs.
-            <a href="https://developer.mozilla.org/es/docs/Learn/Forms/Basic_native_form_controls">https://developer.mozilla.org/es/docs/Learn/Forms/Basic_native_form_controls</a><br>
-            
-            Copes, F. (2024, 11 enero). The HTML Handbook – Learn HTML for Beginners. freeCodeCamp.org.
-            <a href="https://www.freecodecamp.org/news/the-html-handbook/">https://www.freecodecamp.org/news/the-html-handbook/</a><br>
-            
-            Estilizando tablas - Aprende desarrollo web | MDN. (2023, 21 julio). MDN Web Docs.
-            <a href="https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/Styling_tables">https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/Styling_tables</a><br>
-            
-            «html 5» | Can I use. . . Support tables for HTML5, CSS3, etc. (s. f.).
-            <a href="https://caniuse.com/?search=html%205">https://caniuse.com/?search=html%205</a><br>
-            
-            Navarro, G. (2021, 30 marzo). ¿Sabes diferenciar correctamente los ciclos de vida del proyecto y el ciclo de desarrollo del producto?
-            <a href="https://es.linkedin.com/pulse/sabes-diferenciar-correctamente-los-ciclos-de-vida-y-navarro-gareca">https://es.linkedin.com/pulse/sabes-diferenciar-correctamente-los-ciclos-de-vida-y-navarro-gareca</a><br>
-            
-            Nice, B. (2018, 24 septiembre). Beginner’s HTML Cheat Sheet - Level Up! - Medium. Medium.
-            <a href="https://medium.com/level-up-web/beginners-html-cheat-sheet-f9b1e3ce88a6">https://medium.com/level-up-web/beginners-html-cheat-sheet-f9b1e3ce88a6</a><br>
-            
-            Online, S. (2023, 29 diciembre). Difference Between HTML4 and HTML5 - Shiksha Online. Shiksha.com.
-            <a href="https://www.shiksha.com/online-courses/articles/difference-between-html4-and-html5/">https://www.shiksha.com/online-courses/articles/difference-between-html4-and-html5/</a><br>
-            
-            Sending form data - Learn web development | MDN. (2024, 16 febrero). MDN Web Docs.
-            <a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_and_retrieving_form_data">https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_and_retrieving_form_data</a><br>
-            
-            World Wide Web - Glosario de MDN Web Docs: Definiciones de términos relacionados con la Web | MDN. (2023, 13 noviembre). MDN Web Docs.
-            <a href="https://developer.mozilla.org/es/docs/Glossary/World_Wide_Web">https://developer.mozilla.org/es/docs/Glossary/World_Wide_Web</a><br>
-        </p>
+        </section>
     </main>
     <footer>
-        <p>
-            Editor Utilizado:
-            <em>
-                <a href = "https://code.visualstudio.com/">Visual Studio Code</a>
-            </em>
-        </p>
+        <div>
+            <p>
+                Editor Utilizado:
+                <em>
+                    <a href = "https://code.visualstudio.com/">Visual Studio Code</a>
+                </em>
+            </p>
+        </div>
     </footer>
 </body>
-
-
-
 </html>
