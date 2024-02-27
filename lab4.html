@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lab 4</title>
+  <meta charset="UTF-8">
+  <script src="scriptLab4.js"></script>
+</head>
+<body>
+  <h1>Resultados de las Funciones</h1>
+  <section id="results">
+    
+    <h2>Ejercicio 1</h2>
+    <script>document.addEventListener('DOMContentLoaded', generateTable())</script>
+
+    <h2>Ejercicio 2</h2>
+    <script>document.addEventListener('DOMContentLoaded', sumNumbers())</script>
+
+    <h2>Ejercicio 3</h2>
+    <h3>Caso de Prueba 1</h3>
+    <p>Arreglo: [0,2,4,-3,4,2,-4,-5]</p>
+    <script>
+      const array1 = counter([0,2,4,-3,4,2,-4,-5]);
+      neg1 = array1[0];
+      zeros1 = array1[1];
+      pos1 = array1[2];
+      total1 = neg1 + zeros1 + pos1;
+      document.write(`<p>Cantidad de Negativos: ${neg1} <br> Cantidad de Ceros: ${zeros1} <br> Cantidad de Números Positivos: ${pos1} <br> Total de Números: ${total1}</p>`);
+    </script>
+    <h3>Caso de Prueba 2</h3>
+    <p>Arreglo: [-5,3,0,-8,4,0,-8,5,-8,0,-4,3,0,-3,9,33]</p>
+    <script>
+      const array2 = counter([-5,3,0,-8,4,0,-8,5,-8,0,-4,3,0,-3,9,33]);
+      neg2 = array2[0];
+      zeros2 = array2[1];
+      pos2 = array2[2];
+      total2 = neg2 + zeros2 + pos2;
+      document.write(`<p>Cantidad de Negativos: ${neg2} <br> Cantidad de Ceros: ${zeros2} <br> Cantidad de Números Positivos: ${pos2} <br> Total de Números: ${total2}</p>`);
+    </script>
+  
+    <h2>Ejercicio 4</h2>
+    <h3>Caso de Prueba 1</h3>
+    <p>Matriz: </p>
+    <script>
+        let matrix1 = [[1, 2, 4], [8, 7, 6], [9, 8, 9]];
+        document.write(matrixToTable(matrix1));
+        let rowAverages1 = average(matrix1);
+        document.write(`<br> Promedio por Fila: <br>`);
+        rowAverages1.forEach((avg, index) => {
+            let fixedAvg = avg.toFixed(3);
+            document.write(`Fila ${index + 1}: ${fixedAvg} <br>`);
+        });
+    </script>
+    <h3>Caso de Prueba 2</h3>
+    <p>Matriz: </p>
+    <script>
+        let matrix2 = [[10, 20, 30], [40, 50, 60], [70, 80, 90]];
+        document.write(matrixToTable(matrix2));
+        let rowAverages2 = average(matrix2);
+        document.write(`<br> Promedio por Fila: <br>`);
+        rowAverages2.forEach((avg, index) => {
+            document.write(`Fila ${index + 1}: ${avg} <br>`);
+        });
+    </script>
+  
+    <h2>Ejercicio 5</h2>
+    <h3>Caso de Prueba 1</h3>
+    <p>Número Dado: 294724 <br></p>
+    <script>
+        document.write(`Número Invertido: ${inverse(294724)}`);
+    </script>
+    <h3>Caso de Prueba 2</h3>
+    <p>Número Dado: 849264937 <br></p>
+    <script>
+        document.write(`Número Invertido: ${inverse(849264937)}`);
+    </script>
+
+    <h2>Ejercicio 6</h2>
+    <h3>Descripción</h3>
+    <p>Calcula la suma de todos los elementos dentro de un arreglo dado.</p>
+    <h3>Caso de Prueba 1</h3>
+    <p>Arreglo: [2,5,33,7,9,66,34,22,5,4,2,46,69,]<br></p>
+    <script>
+        let sum1 = sumElementsArray([2,5,33,7,9,66,34,22,5,4,2,46,69]);
+        document.write(`Suma del total de elementos: ${sum1}`);
+    </script>
+    <h3>Caso de Prueba 2</h3>
+    <p>Arreglo: [-2,3,-66,3,6,11,9,6,7,7,3,-2,0,33,0]<br></p>
+    <script>
+        let sum2 = sumElementsArray([-2,3,-66,3,6,11,9,6,7,7,3,-2,0,33,0]);
+        document.write(`Suma del total de elementos: ${sum2}`);
+    </script>
+
+  </section>
+
+
+  <section id="questions">
+    <h1>Questions</h1>
+
+    <h3>¿Qué diferencias y semejanzas hay entre Java y JavaScript?</h3>
+    <p>Java es un lenguaje de programación orientado a objetos, originalmente nació con la intención de tener poca dependencia de implementación. Por otro lado, JavaScript surgió para agregar programas y funcionalidades extra a páginas web. La mayor similitud entre las dos es el nombre, por un lado <strong>Java</strong> es un lenguaje compilado, y <strong>JavaScript</strong> es interpretado.  (Cerón Soria M., 2023).</p>
+        
+    <h3>¿Qué métodos tiene el objeto Date? (Menciona al menos 5)</h3>
+    <strong>getFullYear():</strong> Permite obtener el año como un dígito de cuatro números.<br>
+    <strong>getMonth():</strong> Permite obtener el número de mes como un número del 0 al 11.<br>
+    <strong>getDate():</strong> Permite obtener el día como un número del 1 al 31.<br>
+    <strong>getDay():</strong> Permite obtener el día de la semana como un número del 0 al 6.<br>
+    <strong>getHours():</strong> Permite obtener la hora como un número entre 0 a 23.</p>
+        
+    <h3>¿Qué métodos tienen los arreglos? (Menciona al menos 5)</h3>
+    <strong>push():</strong> Permite añadir elementos al arreglo.<br>
+    <strong>unshift():</strong> Permite añadir un elemento al inicio del arreglo.<br>
+    <strong>pop():</strong> Permite eliminar el último elemento del arreglo.<br>
+    <strong>shift():</strong> Permite eliminar el elemento del inicio del arreglo.<br>
+    <strong>concat():</strong> Permite añadir múltiples arreglos.<br>
+    <strong>find():</strong> Permite saber si un elemento existe dentro de nuestro arreglo.</p>
+        
+    <h3>¿Cómo se declara una variable con alcance local dentro de una función?</h3>
+    Se puede declarar ya sea con <em>let</em> o con <em>const</em>, la diferencia es que una variable <em>const</em> no puede ser reasignada, mientras que una <em>let</em> sí.</p>
+        
+    <h3>¿Qué implicaciones tiene utilizar variables globales dentro de funciones?</h3>
+    <p>Qué pueden ser accedidas desde fuera del cuerpo de la función, si bien en ciertos casos podrías beneficiarte de ello, suele ser riesgoso pues da la posibilidad de romper el sistema si se maneja de una manera no planeada por fuera de la función, lo que añade otro lugar como posible causa de errores.</p>
+        
+  </section>
+
+  <footer>
+    <h3>Referencias</h3>
+    <p>
+        <a href="https://docs.google.com/document/d/1201l2ge3rhdCpdNmBi7jHMV8zsxhtWfLNue8585kfr8/edit?usp=sharing">Liga a la lista de referencias</a>
+    </p>
+  </footer>
+</body>
+</html>
