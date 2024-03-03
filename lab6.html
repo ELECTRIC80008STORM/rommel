@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Validator</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+  </head>
+  <body class="grey lighten-4">
+    <header>
+        <nav>
+            <div class="nav-wrapper grey darken-4">
+                <div class="brand-logo center" onclick="changeTitleTextStyle()" style="cursor:pointer;">Password Validator</div>
+            </div>
+          </nav>
+    </header>
+
+        
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m8 offset-m2">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="center">
+                                <!-- User Profile Picture Icon -->
+                            <div class="profile-pic-placeholder">
+                                <i class="medium material-icons">account_circle</i>
+                            </div>
+                            <!-- Password Input -->
+                            <div class="input-field">
+                                <input id="password" type="password" class="validate">
+                                <label for="password">Password</label>
+                            </div>
+                            <!-- Password Input Validation -->
+                            <div class="input-field">
+                                <input id="passwordValidation" type="password" class="validate" disabled>
+                                <label for="passwordValidation">Reintroduce Your Password</label>
+                            </div>
+                            <!-- Space For The Tips Given To Users -->
+                            <div>
+                                <div id="tipsGivenToUser" class="center"></div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="messagePlaceholder"></div>
+
+    <div id="linkToDocument"></div>
+
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script src="scriptLab6.js"></script>
+  </body>
+</html>
