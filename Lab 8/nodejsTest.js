@@ -33,6 +33,7 @@ console.log(`${currectDateAsAString()}`);
 const http = require('http');
 
 const server = http.createServer((request, response) => {
+    // It lets you set a response's header and it can be called multiple times
     response.setHeader('Content-Type', 'text/html');
     response.write(`<!DOCTYPE html>
     <html>
