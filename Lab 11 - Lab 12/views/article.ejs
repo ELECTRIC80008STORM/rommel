@@ -1,0 +1,31 @@
+<%- include('partials/header.ejs') %>
+<%- include('partials/navbar.ejs') %>
+
+    <div class="container">
+        <h1><%= (typeof pagePrimaryTitle !== 'undefined')? pagePrimaryTitle : '' %></h1>
+    </div>
+
+<% if (typeof includeImageSection !== 'undefined' && includeImageSection && typeof imageUrl !== 'undefined') { %>
+    <div class="container">
+        <div class="valign-wrapper center-align" style="height:100vh;">
+            <div class="row">
+                <div class="col s12">
+                    <img class="materialboxed responsive-img" src="<%= imageUrl %>" alt=<%= (typeof imageAltText !== 'undefined')? imageAltText : "Image" %>>
+                </div>
+                <% if (typeof includeButton !== 'undefined' && includeButton && typeof buttonRedirection !== 'undefined' && typeof buttonText !== 'undefined') { %>
+                    <div class="col s12">
+                        <a href="<%= buttonRedirection %>" class="waves-effect waves-light btn button-top-margin"><%= buttonText%></a>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+<% } %>
+
+<% if (typeof includeContent !== 'undefined' && includeContent && typeof content !== 'undefined') { %>
+    <div class="container">
+        <%- content %>
+    </div>
+<% } %>
+    
+<%- include('partials/footer.ejs') %>
