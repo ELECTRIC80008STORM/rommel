@@ -10,43 +10,39 @@ const userInfo = [];
 
 const escapeHtml = require('escape-html');
 
-router.get('/userinfo', (request, response, next) => {
-    response.render('article', {
-        includeContent: true,
-        content: `
-        <div class="container">
-            <h2>User Personal Profile Information</h2>
-            <form action="userinfo" method="POST">
-                <div class="input-field">
-                    <input type="text" id="name" name="name" required>
-                    <label for="name">Name</label>
-                </div>
-                <div class="input-field">
-                    <input type="number" id="age" name="age" required>
-                    <label for="age">Age</label>
-                </div>
-                <div class="input-field">
-                    <p>
-                        <label>
-                            <input name="gender" type="radio" value="Male" required>
-                            <span>Male</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input name="gender" type="radio" value="Female" required>
-                            <span>Female</span>
-                        </label>
-                    </p>
-                </div>
-                <button class="btn waves-effect waves-light" type="submit">Submit</button>
-            </form>
+router.get('/userRegistration', (request, response, next) => {
+    response.render('userRegistration', {
+        fieldTitle: 'Sign Up',
+        actionTaken: 'userRegistration',
+        fieldsRequired: `
+        <div class="input-field">
+            <input type="text" id="name" name="name" required>
+            <label for="name">Name</label>
+        </div>
+        <div class="input-field">
+            <input type="number" id="age" name="age" required>
+            <label for="age">Age</label>
+        </div>
+        <div class="input-field">
+            <p>
+                <label>
+                    <input name="gender" type="radio" value="Male" required>
+                    <span>Male</span>
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input name="gender" type="radio" value="Female" required>
+                    <span>Female</span>
+                </label>
+            </p>
         </div>
         `,
+        submitButtonText: 'Continue',
     });
 });
 
-router.post('/userinfo', (request, response, next) => {
+router.post('/userRegistration', (request, response, next) => {
     userInfo.push({
         name: escapeHtml(request.body.name),
         age: escapeHtml(request.body.age),

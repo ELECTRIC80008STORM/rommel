@@ -1,0 +1,18 @@
+<%- include('partials/header.ejs') %>
+<%- include('partials/navbar.ejs') %>
+
+    <div class="container">
+        <h1><%= (typeof pagePrimaryTitle !== 'undefined')? pagePrimaryTitle : '' %></h1>
+    </div>
+
+    <div class="container">
+        <h2><%= (typeof fieldTitle !== 'undefined'? fieldTitle : '') %></h2>
+        <form action=<%= (typeof actionTaken !== 'undefined')? actionTaken : "" %> method="POST">
+            <% if (typeof fieldsRequired !== 'undefined') { %>
+                <%- fieldsRequired %>
+            <% } %>
+            <button class="btn waves-effect waves-light" type="submit"><%= (typeof submitButtonText !== 'undefined')? submitButtonText : 'Submit' %></button>
+        </form>
+    </div>
+
+<%- include('partials/footer.ejs') %>
