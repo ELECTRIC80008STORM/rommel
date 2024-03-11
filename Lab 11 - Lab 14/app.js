@@ -23,15 +23,18 @@ const bodyParser = require('body-parser');
 // the forms' data
 app.use(bodyParser.urlencoded({extended: false}));
 
-const cookieParser = require('cookie-parser');
-app.use(cookieParser());
+// Integrar cuando sea necesario
+// const cookieParser = require('cookie-parser');
+// app.use(cookieParser());
 
+const userRoutes = require('./routes/users.routes.js');
 const catRoutes = require('./routes/cats.routes.js');
 const dogRoutes = require('./routes/dogs.routes.js');
 const mainRoutes = require('./routes/main.routes.js');
 
 // This is "mounting the route", and it means that all routes defined inside
 // "mainRoutes" are going to be attach to the specified route
+app.use('/user', userRoutes);
 app.use('/cat', catRoutes);
 app.use('/dog', dogRoutes);
 app.use('/', mainRoutes);
