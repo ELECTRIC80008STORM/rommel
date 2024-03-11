@@ -1,7 +1,7 @@
 <nav>
     <div class="nav-wrapper">
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="/userRegistration">User Information</a></li>
+            <li><a href="/userRegistration"><%= (typeof isUserRegistered !== 'undefined' && isUserRegistered && typeof username !== 'undefined')? username : 'Sign Up' %></a></li>
             <li><a href="/cat">Cats</a></li>
             <li><a href="/dog">Dogs</a></li>
         </ul>

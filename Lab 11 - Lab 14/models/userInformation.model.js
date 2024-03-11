@@ -2,8 +2,9 @@ const usersInformation = [];
 
 module.exports = class User {
 
-    constructor(name, age, gender){
+    constructor(name, email, age, gender){
         this.name = name;
+        this.email = email;
         this.age = age;
         this.gender = gender;
     }
@@ -11,6 +12,7 @@ module.exports = class User {
     save(){
         usersInformation.push({
             name: this.name,
+            email: this.email,
             age: this.age,
             gender: this.gender,
         })

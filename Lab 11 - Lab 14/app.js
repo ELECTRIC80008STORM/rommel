@@ -5,6 +5,13 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
+const session = require('express-session');
+app.use(session({
+  secret: 'Random long string example of how a low security page works', 
+  resave: false, // Session is only saved when something changes
+  saveUninitialized: false, // It prevents the app for storing a session that isn't needed
+}));
+
 app.use(express.static('public'));
 
 // "body-parser" is a third party midleware that allows you to analyze
@@ -15,6 +22,9 @@ const bodyParser = require('body-parser');
 // "application/x-www-form-urlencoded", meaning, it can give sense to
 // the forms' data
 app.use(bodyParser.urlencoded({extended: false}));
+
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
 
 const catRoutes = require('./routes/cats.routes.js');
 const dogRoutes = require('./routes/dogs.routes.js');

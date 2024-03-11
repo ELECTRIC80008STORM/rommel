@@ -12,6 +12,10 @@ exports.get_userRegistration = (request, response, next) => {
             <label for="name">Name</label>
         </div>
         <div class="input-field">
+            <input type="text" id="email" name="email" required>
+            <label for="email">Email</label>
+        </div>
+        <div class="input-field">
             <input type="number" id="age" name="age" required>
             <label for="age">Age</label>
         </div>
@@ -37,6 +41,7 @@ exports.get_userRegistration = (request, response, next) => {
 exports.post_userRegistration = (request, response, next) => {
     const newUser = new User(
         escapeHtml(request.body.name),
+        escapeHtml(request.body.email),
         escapeHtml(request.body.age),
         escapeHtml(request.body.gender),
     );
@@ -65,6 +70,10 @@ exports.get_root = (request, response, next) => {
                 <td>${usersInformation[usersInformation.length - 1].name}</td>
             </tr>
             <tr>
+                <td>Email</td>
+                <td>${usersInformation[usersInformation.length - 1].email}</td>
+            </tr>
+            <tr>
                 <td>Age</td>
                 <td>${usersInformation[usersInformation.length - 1].age}</td>
             </tr>
@@ -74,7 +83,7 @@ exports.get_root = (request, response, next) => {
             </tr>
             </table>
             <br>
-            <a href="https://docs.google.com/document/d/1201l2ge3rhdCpdNmBi7jHMV8zsxhtWfLNue8585kfr8/edit#heading=h.yigdqadcrfzr">Link To Document with the Question's Answer</a>
+            <a href="https://docs.google.com/document/d/1201l2ge3rhdCpdNmBi7jHMV8zsxhtWfLNue8585kfr8/edit#heading=h.ez6jpdwpkben">Link To Document with the Question's Answer</a>
             `
         });
     }   
