@@ -1,0 +1,28 @@
+{
+  "name": "sandbox-webpage",
+  "version": "1.0.0",
+  "description": "A place to implement all of the Labs features",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ELECTRIC80008STORM/rommel.git"
+  },
+  "author": "Rommel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ELECTRIC80008STORM/rommel/issues"
+  },
+  "homepage": "https://github.com/ELECTRIC80008STORM/rommel#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.3",
+    "express-session": "^1.18.0",
+    "mysql2": "^3.9.2"
+  }
+}

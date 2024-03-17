@@ -15,13 +15,13 @@ app.use(session({
 app.use(express.static('public'));
 
 // "body-parser" is a third party midleware that allows you to analyze
-// requests' bodies
-const bodyParser = require('body-parser');
+// requests' bodies, as of now, it comes with Express, so it doesn't need to be install again
+// const bodyParser = require('body-parser');
 
 // It allows you to analyze requests' bodies with content type
 // "application/x-www-form-urlencoded", meaning, it can give sense to
 // the forms' data
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.urlencoded({extended: false}));
 
 // Integrar cuando sea necesario
 // const cookieParser = require('cookie-parser');
