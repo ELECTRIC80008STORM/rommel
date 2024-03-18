@@ -23,9 +23,8 @@ app.use(express.static('public'));
 // the forms' data
 app.use(express.urlencoded({extended: false}));
 
-// Integrar cuando sea necesario
-// const cookieParser = require('cookie-parser');
-// app.use(cookieParser());
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
 
 const userRoutes = require('./routes/users.routes.js');
 const catRoutes = require('./routes/cats.routes.js');

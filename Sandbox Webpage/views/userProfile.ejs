@@ -1,0 +1,23 @@
+<%- include('partials/header.ejs') %>
+<%- include('partials/navbar.ejs', {isUserRegistered: isUserRegistered, userProfileView: userProfileView, username: username}) %>
+
+    <div class="container">
+        <h1>User Profile</h1>
+    </div>
+
+<div class="container">
+    <h1>Profile of : <%= username %></h1>
+    <div>
+        <h2>Information:</h2>
+        <p>Name: <%= userInfo.name %></p>
+        <p>Email: <%= userInfo.email %></p>
+        <p>Age: <%= userInfo.age %></p>
+        <p>Gender: <%= userInfo.gender %></p>
+    </div>
+</div>
+
+<div class="container">
+    <a class="waves-effect waves-light btn" href="/user/edit-profile">Edit Profile</a>
+</div>
+    
+<%- include('partials/footer.ejs') %>

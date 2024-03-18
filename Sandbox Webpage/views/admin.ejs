@@ -1,0 +1,31 @@
+<%- include('partials/header.ejs') %>
+<%- include('partials/navbar.ejs', {isUserRegistered: isUserRegistered, userProfileView: userProfileView, username: username}) %>
+
+    <div class="container">
+        <h1>User Profile</h1>
+    </div>
+
+    <table class="highlight">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th>Gender</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% users.forEach(user => { %>
+                <tr>
+                    <td><%= user.username %></td>
+                    <td><%= user.name %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.age %></td>
+                    <td><%= user.gender %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    
+<%- include('partials/footer.ejs') %>

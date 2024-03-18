@@ -1,0 +1,54 @@
+<%- include('partials/header.ejs') %>
+<%- include('partials/navbar.ejs') %>
+
+    <div class="container">
+        <h2>Sign Up</h2>
+        <p style="font-weight: bold;">Just fill the spaces of the information you would like to modify.</p>
+        <p>As of now, the username can't be changed, we'll implement this feature in a future.</p>
+        <form action="edit-profile" method="POST">
+            <div class="input-field">
+                <input type="text" id="name" name="name" required value="<%= userInfo.name %>">
+                <label for="name">Name</label>
+            </div>
+            <div class="input-field">
+                <input type="text" id="email" name="email" required value="<%= userInfo.email %>">
+                <label for="email">Email</label>
+            </div>
+            <div class="input-field">
+                <input type="number" id="age" name="age" required value="<%= userInfo.age %>">
+                <label for="age">Age</label>
+            </div>
+            <div class="input-field">
+                <% if (userInfo.gender === 'Male') { %>
+                    <p>
+                        <label>
+                            <input name="gender" type="radio" value="Male" required checked>
+                            <span>Male</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="gender" type="radio" value="Female" required>
+                            <span>Female</span>
+                        </label>
+                    </p>
+                <% } else { %>
+                    <p>
+                        <label>
+                            <input name="gender" type="radio" value="Male" required>
+                            <span>Male</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="gender" type="radio" value="Female" required checked>
+                            <span>Female</span>
+                        </label>
+                    </p>
+                <% } %>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit">Continue</button>
+        </form>
+    </div>
+
+<%- include('partials/footer.ejs') %>

@@ -1,8 +1,8 @@
 exports.get_root = (request, response, next) => {
     response.render('article', {
-        isUserRegistered: (typeof request.session.name !== 'undefined')? true : false,
-        userProfileView: '/user/signup',
-        username: (typeof request.session.name !== 'undefined')? request.session.name : '',
+        isUserRegistered: (typeof request.session.user !== 'undefined')? true : false,
+        userProfileView: (typeof request.session.user !== 'undefined')? '/user/profile' : '/user/signup',
+        username: (typeof request.session.user !== 'undefined')? request.session.user.username : '',
         pagePrimaryTitle: "Testing How To Handle Routes",
         includeContent: true,
         content: `

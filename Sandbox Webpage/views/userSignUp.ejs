@@ -2,16 +2,39 @@
 <%- include('partials/navbar.ejs') %>
 
     <div class="container">
-        <h1><%= (typeof pagePrimaryTitle !== 'undefined')? pagePrimaryTitle : '' %></h1>
-    </div>
-
-    <div class="container">
-        <h2><%= (typeof fieldTitle !== 'undefined'? fieldTitle : '') %></h2>
-        <form action=<%= (typeof actionTaken !== 'undefined')? actionTaken : "" %> method="POST">
-            <% if (typeof fieldsRequired !== 'undefined') { %>
-                <%- fieldsRequired %>
-            <% } %>
-            <button class="btn waves-effect waves-light" type="submit"><%= (typeof submitButtonText !== 'undefined')? submitButtonText : 'Submit' %></button>
+        <h2>Sign Up</h2>
+        <form action="signup" method="POST">
+            <div class="input-field">
+                <input type="text" id="username" name="username" required>
+                <label for="username">Username</label>
+            </div>
+            <div class="input-field">
+                <input type="text" id="name" name="name" required>
+                <label for="name">Name</label>
+            </div>
+            <div class="input-field">
+                <input type="text" id="email" name="email" required>
+                <label for="email">Email</label>
+            </div>
+            <div class="input-field">
+                <input type="number" id="age" name="age" required>
+                <label for="age">Age</label>
+            </div>
+            <div class="input-field">
+                <p>
+                    <label>
+                        <input name="gender" type="radio" value="Male" required>
+                        <span>Male</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="gender" type="radio" value="Female" required>
+                        <span>Female</span>
+                    </label>
+                </p>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit">Continue</button>
         </form>
     </div>
 

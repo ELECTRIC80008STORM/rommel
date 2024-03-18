@@ -1,5 +1,8 @@
 <nav>
     <div class="nav-wrapper">
+        <% if (typeof isUserRegistered !== 'undefined' && isUserRegistered) { %>
+            <a href="/user/admin" class="brand-logo">Admin</a>
+        <% } %>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <% if (typeof isUserRegistered !== 'undefined' && isUserRegistered && typeof userProfileView !== 'undefined' && typeof username !== 'undefined') { %>
                 <li><a href="<%= userProfileView %>"><%= username %></a></li>
