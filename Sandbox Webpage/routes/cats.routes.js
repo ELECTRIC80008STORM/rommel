@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const isAuth = require('../util/is-auth');
 
 const catRouteController = require('../controllers/cats.controller');
 
-router.get('/catpage', catRouteController.getCatPage);
+router.get('/catpage', isAuth, catRouteController.getCatPage);
 
-router.get('/', catRouteController.get_root);
+router.get('/', isAuth, catRouteController.get_root);
 
 module.exports = router;

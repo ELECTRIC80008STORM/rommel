@@ -6,9 +6,14 @@
         <p style="font-weight: bold;">Just fill the spaces of the information you would like to modify.</p>
         <p>As of now, the username can't be changed, we'll implement this feature in a future.</p>
         <form action="edit-profile" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
             <div class="input-field">
                 <input type="text" id="name" name="name" required value="<%= userInfo.name %>">
                 <label for="name">Name</label>
+            </div>
+            <div class="input-field">
+                <input type="password" id="password" name="password" required value="<%= userInfo.password %>">
+                <label for="password">Password</label>
             </div>
             <div class="input-field">
                 <input type="text" id="email" name="email" required value="<%= userInfo.email %>">

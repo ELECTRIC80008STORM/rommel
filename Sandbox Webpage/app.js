@@ -26,6 +26,16 @@ app.use(express.urlencoded({extended: false}));
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
+// TODO: Change for double Csrf
+const csrf = require('csurf');
+const csrfProtection = csrf();
+app.use(csrfProtection); 
+
+app.use((request, response, next) => {
+    response.locals.csrfToken = request.csrfToken();
+    next();
+});
+
 const userRoutes = require('./routes/users.routes.js');
 const catRoutes = require('./routes/cats.routes.js');
 const dogRoutes = require('./routes/dogs.routes.js');

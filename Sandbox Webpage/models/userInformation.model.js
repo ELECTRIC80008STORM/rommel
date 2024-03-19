@@ -1,20 +1,28 @@
 const db = require('../util/database');
+const bcrypt = require('bcryptjs');
 
 module.exports = class User {
 
-    constructor(username, name, email, age, gender){
+    constructor(username, name, password, email, age, gender){
         this.username = username;
         this.name = name;
+        this.password = password;
         this.email = email;
         this.age = age;
         this.gender = gender;
     }
 
     save(){
-        return db.execute(`
-        insert into user (username, name, email, age, gender)
-        values (?, ?, ?, ?, ?)
-        `, [this.username, this.name, this.email, this.age, this.gender]); 
+        return bcrypt.hash(this.password, 12)
+        .then((encrypted_password) => {
+            return db.execute(`
+            insert into user (username, name, password, email, age, gender)
+            values (?, ?, ?, ?, ?, ?)
+            `, [this.username, this.name, encrypted_password, this.email, this.age, this.gender]);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
     }
 
     static fetchAll(){
@@ -33,11 +41,11 @@ module.exports = class User {
         }
     }
 
-    static update(username, name, email, age, gender){
+    static update(username, name, password, email, age, gender){
         return db.execute(`
             update user 
-            set name = ?, email = ?, age = ?, gender = ?
+            set name = ?, password = ?, email = ?, age = ?, gender = ?
             where username = ?
-        `, [name, email, age, gender, username]);
+        `, [name, password, email, age, gender, username]);
     }
 }

@@ -3,7 +3,14 @@
 
     <div class="container">
         <h2>Sign Up</h2>
+        <!-- TODO: The message should appear only when the user writes a name that it's already in the database -->
+        <% if (usernameInUse) { %>
+            <div class="alert alert-danger" role="alert">
+                The username is already in use. Please choose a different one this time.
+            </div>
+        <% } %>
         <form action="signup" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
             <div class="input-field">
                 <input type="text" id="username" name="username" required>
                 <label for="username">Username</label>
@@ -12,6 +19,9 @@
                 <input type="text" id="name" name="name" required>
                 <label for="name">Name</label>
             </div>
+            <!-- TODO: The password checkbox should be outside the password field -->
+            <input type="password" id="password" name="password" required>
+                <label for="password">Password</label>         
             <div class="input-field">
                 <input type="text" id="email" name="email" required>
                 <label for="email">Email</label>
