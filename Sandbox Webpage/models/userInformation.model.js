@@ -48,4 +48,13 @@ module.exports = class User {
             where username = ?
         `, [name, password, email, age, gender, username]);
     }
+
+    static getPrivileges(username) {
+        return db.execute(`
+            select permission
+            from privilege pr, has h, role r, assigns a, user u
+            where u.username = ? AND u.username = a.username AND
+            a.idrol = r.id AND r.id = h.idrole AND h.idprivilege = pr.id
+        `, [username]);
+    }
 }
