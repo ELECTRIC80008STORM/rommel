@@ -15,17 +15,8 @@ module.exports = class User {
     // Stores the new user in the database, along with its encrypted password
     save(){
         return bcrypt.hash(this.password, 12)
-        .then(async (encrypted_password) => {
-            await db.execute(`
-            insert into user (username, name, password, email, age, gender)
-            values (?, ?, ?, ?, ?, ?)
-            `, [this.username, this.name, encrypted_password, this.email, this.age, this.gender]);
-
-            return db.execute(
-                'insert into assigns (username, idrole) values (?, 1)',
-                [this.username]
-            );
-            
+        .then((encrypted_password) => {
+            return db.execute('call createNewUser(?, ?, ?, ?, ?, ?)', [this.username, this.name, encrypted_password, this.email, this.age, this.gender])
         })
         .catch((error) => {
             console.log(error);
