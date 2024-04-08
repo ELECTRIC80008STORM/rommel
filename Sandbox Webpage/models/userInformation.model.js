@@ -41,7 +41,7 @@ module.exports = class User {
 
     // It would be better to overload the static function in regard of the parameters it receives
     static update(username, name, password, email, age, gender){
-        return db.execute(`call updateUserInformation(?, ?, ?, ?, ?, ?)`, [this.username, this.name, password, this.email, this.age, this.gender]);
+        return db.execute(`call updateUserInformation(?, ?, ?, ?, ?, ?)`, [username, name, password, email, age, gender]);
     }
 
     static getPrivileges(username) {
@@ -55,4 +55,5 @@ module.exports = class User {
             where u.username = ?
         `, [username]);
     }
+
 }
