@@ -17,6 +17,7 @@ exports.get_signup = (request, response, next) => {
             }
         });        
         `,
+        privileges: request.session.privileges || [],
     });
 };
 
@@ -27,6 +28,7 @@ exports.post_signup = (request, response, next) => {
             if (rows.length > 0) {
                 response.render('userSignUp', {
                     usernameInUse: true,
+                    privileges: request.session.privileges || [],
                 });
             } else {
                 const newUser = new User(
@@ -39,8 +41,16 @@ exports.post_signup = (request, response, next) => {
                 );
                 newUser.save()
                     .then(() => {
-                        request.session.user = newUser;
-                        response.redirect('/');
+                        User.getPrivileges(username)
+                        .then(([privileges]) => {
+                            console.log(privileges);
+                            request.session.user = newUser;
+                            request.session.privileges = privileges;
+                            response.redirect('/');
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                        })
                     })
                     .catch((error) => {
                         console.log(error);
@@ -69,6 +79,7 @@ exports.get_signin = (request, response, next) => {
                 }
             }
         `,
+        privileges: request.session.privileges || [],
     });
 };
 
@@ -81,9 +92,17 @@ exports.post_signin = (request, response, next) => {
                 bcrypt.compare(request.body.password, user.password)
                     .then((doMatch) => {
                         if(doMatch) {
-                            request.session.user = user;
-                            request.session.isLoggedIn = true;
-                            response.redirect('/');
+                            User.getPrivileges(username)
+                            .then(([privileges]) => {
+                                console.log(privileges);
+                                request.session.user = user;
+                                request.session.isLoggedIn = true;
+                                request.session.privileges = privileges;
+                                response.redirect('/');
+                            })
+                            .catch((error) => {
+                                console.log(error);
+                            })
                         } else {
                             request.session.error = "User &/or password are incorrect";
                             console.log(request.session.error);
@@ -115,6 +134,7 @@ exports.get_profile = (request, response, next) => {
                 userProfileView: '/user/profile',
                 userInfo: rows[0],
                 username: username,
+                privileges: request.session.privileges || [],
             });
         })
         .catch((error) => {
@@ -132,6 +152,7 @@ exports.get_edit_profile = (request, response, next) => {
                 userProfileView: '/user/profile',
                 userInfo: rows[0],
                 username: username,
+                privileges: request.session.privileges || [],
             });
         })
         .catch((error) => {
@@ -167,6 +188,7 @@ exports.get_admin = (request, response, next) => {
             userProfileView: '/user/profile',
             users: rows,
             username: username || '',
+            privileges: request.session.privileges || [],
         });
     })
     .catch((error) => {

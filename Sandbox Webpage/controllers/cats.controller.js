@@ -9,7 +9,9 @@ exports.getCatPage = (request, response, next) => {
         materializeInitScript: `document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.materialboxed');
             var instances = M.Materialbox.init(elems, {});
-        });`});
+        });`,
+        privileges: request.session.privileges || [],
+    });
 };
 
 exports.get_root = (request, response, next) => {
@@ -28,5 +30,7 @@ exports.get_root = (request, response, next) => {
             var elems = document.querySelectorAll('.materialboxed');
             var instances = M.Materialbox.init(elems, {});
         });
-    `});
+    `,
+    privileges: request.session.privileges || [],
+    });
 };

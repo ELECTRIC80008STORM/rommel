@@ -12,13 +12,20 @@ module.exports = class User {
         this.gender = gender;
     }
 
+    // Stores the new user in the database, along with its encrypted password
     save(){
         return bcrypt.hash(this.password, 12)
-        .then((encrypted_password) => {
-            return db.execute(`
+        .then(async (encrypted_password) => {
+            await db.execute(`
             insert into user (username, name, password, email, age, gender)
             values (?, ?, ?, ?, ?, ?)
             `, [this.username, this.name, encrypted_password, this.email, this.age, this.gender]);
+
+            return db.execute(
+                'insert into assigns (username, idrole) values (?, 1)',
+                [this.username]
+            );
+            
         })
         .catch((error) => {
             console.log(error);
@@ -41,6 +48,7 @@ module.exports = class User {
         }
     }
 
+    // It would be better to overload the static function in regard of the parameters it receives
     static update(username, name, password, email, age, gender){
         return db.execute(`
             update user 
@@ -51,10 +59,13 @@ module.exports = class User {
 
     static getPrivileges(username) {
         return db.execute(`
-            select permission
-            from privilege pr, has h, role r, assigns a, user u
-            where u.username = ? AND u.username = a.username AND
-            a.idrol = r.id AND r.id = h.idrole AND h.idprivilege = pr.id
+            select pr.permission
+            from user u
+            join assigns a on u.username = a.username
+            join role r on a.idrole = r.id
+            join has h on r.id = h.idrole
+            join privilege pr on h.idprivilege = pr.id
+            where u.username = ?
         `, [username]);
     }
 }

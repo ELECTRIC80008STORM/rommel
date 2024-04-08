@@ -1,8 +1,11 @@
 <nav>
     <div class="nav-wrapper">
-        <% if (typeof isUserRegistered !== 'undefined' && isUserRegistered) { %>
-            <a href="/user/admin" class="brand-logo">Admin</a>
+        <% for(privilege of privileges){ %>
+            <% if(privilege.permission == 'viewAdminFunctions'){ %>
+                <a href="/user/admin" class="brand-logo">Admin</a>
+            <% } %>
         <% } %>
+
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <% if (typeof isUserRegistered !== 'undefined' && isUserRegistered && typeof userProfileView !== 'undefined' && typeof username !== 'undefined') { %>
                 <li><a href="<%= userProfileView %>"><%= username %></a></li>
@@ -10,8 +13,19 @@
                 <li><a href="/user/signin">Sign In</a></li>
                 <li><a href="/user/signup">Sign Up</a></li>
             <% } %>
-            <li><a href="/cat">Cats</a></li>
-            <li><a href="/dog">Dogs</a></li>
+
+            <% for(privilege of privileges){ %>
+                <% if(privilege.permission == 'viewCatsPages'){ %>
+                    <li><a href="/cat">Cats</a></li>
+                <% } %>
+            <% } %>
+
+            <% for(privilege of privileges){ %>
+                <% if(privilege.permission == 'viewDogsPages'){ %>
+                    <li><a href="/dog">Dogs</a></li>
+                <% } %>
+            <% } %>
+
         </ul>
     </div>
 </nav>

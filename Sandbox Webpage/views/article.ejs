@@ -1,8 +1,8 @@
 <%- include('partials/header.ejs') %>
 <% if (typeof isUserRegistered !== 'undefined' && isUserRegistered && typeof userProfileView !== 'undefined' && typeof username !== 'undefined') { %>
-    <%- include('partials/navbar.ejs', {isUserRegistered: isUserRegistered, userProfileView: userProfileView, username: username}) %>
+    <%- include('partials/navbar.ejs', {isUserRegistered: isUserRegistered, userProfileView: userProfileView, username: username, privileges: privileges}) %>
 <% } else {%>
-    <%- include('partials/navbar.ejs') %>
+    <%- include('partials/navbar.ejs', {privileges: privileges}) %>
 <% } %>
     <div class="container">
         <h1><%= (typeof pagePrimaryTitle !== 'undefined')? pagePrimaryTitle : '' %></h1>

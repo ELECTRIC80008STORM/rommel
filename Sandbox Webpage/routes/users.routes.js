@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const isAuth = require('../util/is-auth');
-const canViewUserData = require('../util/canViewUserData')
+const canViewAdminFunctions = require('../util/canViewAdminFunctions');
 
 const usersRouteController = require('../controllers/users.controller');
 
@@ -20,7 +20,7 @@ router.get('/edit-profile', isAuth, usersRouteController.get_edit_profile);
 
 router.post('/edit-profile', isAuth, usersRouteController.post_edit_profile);
 
-router.get('/admin', isAuth, canViewUserData, usersRouteController.get_admin);
+router.get('/admin', isAuth, canViewAdminFunctions, usersRouteController.get_admin);
 
 // router.get('/', mainRouteController.get_root);
 
