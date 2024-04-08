@@ -15,20 +15,11 @@ module.exports = class User {
     // Stores the new user in the database, along with its encrypted password
     save(){
         return bcrypt.hash(this.password, 12)
-        .then(async (encrypted_password) => {
-            await db.execute(`
-            insert into user (username, name, password, email, age, gender)
-            values (?, ?, ?, ?, ?, ?)
-            `, [this.username, this.name, encrypted_password, this.email, this.age, this.gender]);
-
-            return db.execute(
-                'insert into assigns (username, idrole) values (?, 1)',
-                [this.username]
-            );
-            
+        .then((encrypted_password) => {
+            return db.execute('call createNewUser(?, ?, ?, ?, ?, ?)', [this.username, this.name, encrypted_password, this.email, this.age, this.gender])
         })
         .catch((error) => {
-            console.log(error);
+            console.error('Error creating new user:', error);
         })
     }
 
@@ -50,11 +41,7 @@ module.exports = class User {
 
     // It would be better to overload the static function in regard of the parameters it receives
     static update(username, name, password, email, age, gender){
-        return db.execute(`
-            update user 
-            set name = ?, password = ?, email = ?, age = ?, gender = ?
-            where username = ?
-        `, [name, password, email, age, gender, username]);
+        return db.execute(`call updateUserInformation(?, ?, ?, ?, ?, ?)`, [username, name, password, email, age, gender]);
     }
 
     static getPrivileges(username) {
@@ -68,4 +55,25 @@ module.exports = class User {
             where u.username = ?
         `, [username]);
     }
+
+    // TODO: Add the implementation of the following code in the admin controls view
+    // As of now, the previous roles doesn't get store in the database but rather overwrite
+    static changeUserRole(username, role){
+        const roles = {
+            Member: 1,
+            'Premium Member': 2,
+            Admin: 3
+        };
+
+        const roleId = roles[role];
+
+        return db.execute('call changeUserRole(?, ?)', [username, roleId])
+        .then(result => {
+            console.log('User role updated successfully');
+        })
+        .catch((error) => {
+            console.error('Error updating user role:', error);
+        });
+    }
+
 }
