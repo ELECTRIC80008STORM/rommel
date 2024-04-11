@@ -7,6 +7,8 @@ const mainRouteController = require('../controllers/main.controller');
 
 router.get('/uploaded-image', isAuth, canViewAdminFunctions, mainRouteController.get_uploadImage);
 
+router.post('/uploaded-image', isAuth, canViewAdminFunctions, mainRouteController.post_uploadImage);
+
 router.get('/', mainRouteController.get_root);
 
 module.exports = router;

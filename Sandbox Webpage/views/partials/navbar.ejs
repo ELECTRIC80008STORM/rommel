@@ -15,6 +15,12 @@
             <% } %>
 
             <% for(privilege of privileges){ %>
+                <% if(privilege.permission == 'viewAdminFunctions'){ %>
+                    <li><a href="/uploaded-image">Upload Your Own Favorite Animal Image</a></li>
+                <% } %>
+            <% } %>
+
+            <% for(privilege of privileges){ %>
                 <% if(privilege.permission == 'viewCatsPages'){ %>
                     <li><a href="/cat">Cats</a></li>
                 <% } %>
