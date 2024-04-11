@@ -94,7 +94,6 @@ exports.post_signin = (request, response, next) => {
                         if(doMatch) {
                             User.getPrivileges(username)
                             .then(([privileges]) => {
-                                console.log(privileges);
                                 request.session.user = user;
                                 request.session.isLoggedIn = true;
                                 request.session.privileges = privileges;

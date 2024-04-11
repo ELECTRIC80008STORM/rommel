@@ -11,6 +11,9 @@ exports.getCatPage = (request, response, next) => {
             var instances = M.Materialbox.init(elems, {});
         });`,
         privileges: request.session.privileges || [],
+        isUserRegistered: (typeof request.session.user !== 'undefined')? true : false,
+        userProfileView: (typeof request.session.user !== 'undefined')? '/user/profile' : '/user/signup',
+        username: (typeof request.session.user !== 'undefined')? request.session.user.username : '',
     });
 };
 
@@ -32,5 +35,8 @@ exports.get_root = (request, response, next) => {
         });
     `,
     privileges: request.session.privileges || [],
+    isUserRegistered: (typeof request.session.user !== 'undefined')? true : false,
+        userProfileView: (typeof request.session.user !== 'undefined')? '/user/profile' : '/user/signup',
+        username: (typeof request.session.user !== 'undefined')? request.session.user.username : '',
     });
 };
