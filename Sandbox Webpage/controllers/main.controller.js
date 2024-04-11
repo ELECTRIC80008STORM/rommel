@@ -1,3 +1,10 @@
+exports.get_uploadImage = (request, response, next) => {
+    response.render('uploadImage', {
+        privileges: request.session.privileges || [],
+        imageUrl: request.session.uploadedImage || '',
+    });
+};
+
 exports.get_root = (request, response, next) => {
     response.render('article', {
         isUserRegistered: (typeof request.session.user !== 'undefined')? true : false,
