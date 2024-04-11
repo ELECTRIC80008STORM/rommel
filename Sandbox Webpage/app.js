@@ -12,7 +12,10 @@ app.use(session({
   saveUninitialized: false, // It prevents the app for storing a session that isn't needed
 }));
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
+
+const path = require('path');
+app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
 // "body-parser" is a third party midleware that allows you to analyze
 // requests' bodies, as of now, it comes with Express, so it doesn't need to be install again
@@ -25,6 +28,33 @@ app.use(express.urlencoded({extended: false}));
 
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
+
+const multer = require('multer');
+
+// Configuration constant to handle the storage of files
+const fileStorage = multer.diskStorage({
+    destination: (request, file, callback) => {
+        callback(null, 'public/uploads');
+    },
+    filename: (request, file, callback) => {
+        // Here we add the timestamp to the file name so that there can't be two files with the same name
+        callback(null, Number(new Date()).toString() + file.originalname);
+    },
+});
+
+// File filter for validating MIME types
+const fileFilter = (request, file, callback) => {
+    if (file.mimetype === 'image/png' || 
+        file.mimetype === 'image/jpg' ||
+        file.mimetype === 'image/jpeg') {
+        callback(null, true);
+    } else {
+        callback(null, false);
+    }
+};
+
+// Here we use the configuration constant and set files to only accept one per post
+app.use(multer({ storage: fileStorage, fileFilter: fileFilter }).single('image'));
 
 // TODO: Change for double Csrf
 const csrf = require('csurf');
