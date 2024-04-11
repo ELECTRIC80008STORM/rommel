@@ -12,7 +12,7 @@ app.use(session({
   saveUninitialized: false, // It prevents the app for storing a session that isn't needed
 }));
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
 const path = require('path');
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
