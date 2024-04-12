@@ -10,7 +10,6 @@ exports.get_uploadImage = (request, response, next) => {
 };
 
 exports.post_uploadImage = (request, response, next) => {
-    console.log('Filename: ')
     // Ensure there's a file in the request
     if (request.file) {
         const filename = request.file.filename;
