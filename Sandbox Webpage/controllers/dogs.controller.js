@@ -14,6 +14,7 @@ exports.getDogPage = (request, response, next) => {
         isUserRegistered: (typeof request.session.user !== 'undefined')? true : false,
         userProfileView: (typeof request.session.user !== 'undefined')? '/user/profile' : '/user/signup',
         username: (typeof request.session.user !== 'undefined')? request.session.user.username : '',
+        catImagesShown: false,
     });
 };
 
@@ -34,7 +35,8 @@ exports.get_root = (request, response, next) => {
     });`,
     privileges: request.session.privileges || [],
     isUserRegistered: (typeof request.session.user !== 'undefined')? true : false,
-        userProfileView: (typeof request.session.user !== 'undefined')? '/user/profile' : '/user/signup',
-        username: (typeof request.session.user !== 'undefined')? request.session.user.username : '',
+    userProfileView: (typeof request.session.user !== 'undefined')? '/user/profile' : '/user/signup',
+    username: (typeof request.session.user !== 'undefined')? request.session.user.username : '',
+    catImagesShown: false,
     });
 };
