@@ -1,3 +1,10 @@
 .button-top-margin {
     margin-top: 20px; /* Ajusta según necesites */
-  }
+}
+
+.card-image img {
+    width: 100%; /* Asegura que la imagen ocupa todo el ancho del card */
+    height: 200px; /* Altura fija para todas las imágenes */
+    object-fit: cover; /* Mantiene la relación de aspecto y cubre el área del card */
+}
+

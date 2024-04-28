@@ -30,5 +30,23 @@
         <%- content %>
     </div>
 <% } %>
+
+<% if (catImagesShown != undefined && catImagesShown) { %>
+    <div class="container">
+        <h1 class="center-align">Cat Gallery</h1>
+        <div class="row">
+            <% cats.forEach(cat => { %>
+                <div class="col s12 m4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="<%= cat.url %>">
+                            <span class="card-title">Cute Cat</span>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+<% } %>
     
 <%- include('partials/footer.ejs') %>
