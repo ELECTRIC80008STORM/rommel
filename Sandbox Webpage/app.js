@@ -85,7 +85,7 @@ app.use((request, response, next) => {
         includeImageSection: false,
         includeContent: true,
         content: `<h2>The file you're searching for doesn't exist</h2>`,
-        privileges: request.session.privileges,
+        privileges: request.session.privileges || [],
     });
 });
 
